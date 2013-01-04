@@ -1,0 +1,1 @@
+Parent module for all MMPS modules holding common configurations like dependency versions and plugins
