@@ -96,7 +96,6 @@
               <drop>false</drop>
               <jdk5>true</jdk5>
               <format>true</format>
-              <propertyfile>target/test-classes/jdbc.properties</propertyfile>
               <skip>${maven.test.skip}</skip>
             </componentProperties>
           </configuration>
