@@ -129,84 +129,6 @@
           <inherited>true</inherited>
         </plugin>
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-shade-plugin</artifactId>
-          <version>2.0</version>
-          <executions>
-            <execution>
-              <phase>package</phase>
-              <goals>
-                <goal>shade</goal>
-              </goals>
-              <configuration>
-                <transformers>
-                  <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                    <mainClass>com.zzvc.mmps.app.Main</mainClass>
-                  </transformer>
-                  <transformer implementation="org.apache.maven.plugins.shade.resource.ComponentsXmlResourceTransformer" />
-                  <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-                    <resource>META-INF/spring.handlers</resource>
-                  </transformer>
-                  <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-                    <resource>META-INF/spring.schemas</resource>
-                  </transformer>
-                  <transformer implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
-                    <resource>applicationContext.xml</resource>
-                    <ignoreDtd>false</ignoreDtd>
-                  </transformer>
-                </transformers>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
-          <groupId>org.bluestemsoftware.open.maven.plugin</groupId>
-          <artifactId>launch4j-plugin</artifactId>
-          <version>1.5.0.0</version>
-          <executions>
-            <execution>
-              <id>l4j-gui</id>
-              <phase>package</phase>
-              <goals>
-                <goal>launch4j</goal>
-              </goals>
-              <configuration>
-                <dontWrapJar>false</dontWrapJar>
-                <headerType>gui</headerType>
-                <jar>target\${project.artifactId}-${project.version}.jar</jar>
-                <outfile>target\${project.artifactId}.exe</outfile>
-                <errTitle />
-                <cmdLine />
-                <chdir />
-                <priority>normal</priority>
-                <downloadUrl>http://java.com/download</downloadUrl>
-                <supportUrl />
-                <customProcName>true</customProcName>
-                <stayAlive>false</stayAlive>
-                <manifest />
-                <icon>src\main\images\Vedio.ico</icon>
-                <classPath>
-                  <mainClass>com.zzvc.mmps.app.Main</mainClass>
-                  <preCp>.</preCp>
-                </classPath>
-                <jre>
-                  <minVersion>1.5.0</minVersion>
-                </jre>
-                <versionInfo>
-                  <fileVersion>1.0.0.0</fileVersion>
-                  <txtFileVersion>${project.version}</txtFileVersion>
-                  <fileDescription>${project.artifactId}</fileDescription>
-                  <productVersion>1.0.0.0</productVersion>
-                  <txtProductVersion>${project.version}</txtProductVersion>
-                  <productName>${project.artifactId}</productName>
-                  <internalName>${project.artifactId}</internalName>
-                  <originalFilename>${project.artifactId}.exe</originalFilename>
-                </versionInfo>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
           <groupId>org.apache.cxf</groupId>
           <artifactId>cxf-codegen-plugin</artifactId>
           <version>2.4.0</version>
@@ -489,6 +411,33 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-shade-plugin</artifactId>
+            <version>2.0</version>
+            <executions>
+              <execution>
+                <phase>package</phase>
+                <goals>
+                  <goal>shade</goal>
+                </goals>
+                <configuration>
+                  <transformers>
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                      <mainClass>com.zzvc.mmps.app.Main</mainClass>
+                    </transformer>
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.ComponentsXmlResourceTransformer" />
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                      <resource>META-INF/spring.handlers</resource>
+                    </transformer>
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                      <resource>META-INF/spring.schemas</resource>
+                    </transformer>
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+                      <resource>applicationContext.xml</resource>
+                      <ignoreDtd>false</ignoreDtd>
+                    </transformer>
+                  </transformers>
+                </configuration>
+              </execution>
+            </executions>
           </plugin>
         </plugins>
       </build>
@@ -498,8 +447,70 @@
       <build>
         <plugins>
           <plugin>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>1.7</version>
+            <executions>
+              <execution>
+                <phase>prepare-package</phase>
+                <configuration>
+                  <tasks>
+                    <mkdir dir="${project.build.directory}/images" />
+                    <get src="http://www.iconarchive.com/download/i45867/tatice/cristal-intense/Java.ico" dest="${project.build.directory}/images/app.ico" />
+                  </tasks>
+                </configuration>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
             <groupId>org.bluestemsoftware.open.maven.plugin</groupId>
             <artifactId>launch4j-plugin</artifactId>
+            <version>1.5.0.0</version>
+            <executions>
+              <execution>
+                <id>l4j-gui</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>launch4j</goal>
+                </goals>
+                <configuration>
+                  <dontWrapJar>false</dontWrapJar>
+                  <headerType>gui</headerType>
+                  <jar>${project.build.directory}/${project.artifactId}-${project.version}.jar</jar>
+                  <outfile>${project.build.directory}/${project.artifactId}.exe</outfile>
+                  <errTitle />
+                  <cmdLine />
+                  <chdir />
+                  <priority>normal</priority>
+                  <downloadUrl>http://java.com/download</downloadUrl>
+                  <supportUrl />
+                  <customProcName>true</customProcName>
+                  <stayAlive>false</stayAlive>
+                  <manifest />
+                  <icon>${project.build.directory}/images/app.ico</icon>
+                  <classPath>
+                    <mainClass>com.zzvc.mmps.app.Main</mainClass>
+                    <preCp>.</preCp>
+                  </classPath>
+                  <jre>
+                    <minVersion>1.5.0</minVersion>
+                  </jre>
+                  <versionInfo>
+                    <fileVersion>1.0.0.0</fileVersion>
+                    <txtFileVersion>${project.version}</txtFileVersion>
+                    <fileDescription>${project.artifactId}</fileDescription>
+                    <copyright>All rights reserved.</copyright>
+                    <productVersion>1.0.0.0</productVersion>
+                    <txtProductVersion>${project.version}</txtProductVersion>
+                    <productName>${project.artifactId}</productName>
+                    <internalName>${project.artifactId}</internalName>
+                    <originalFilename>${project.artifactId}.exe</originalFilename>
+                  </versionInfo>
+                </configuration>
+              </execution>
+            </executions>
           </plugin>
         </plugins>
       </build>
