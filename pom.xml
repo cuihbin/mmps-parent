@@ -351,7 +351,7 @@
     <!-- JDBC settings -->
     <jdbc.groupId>mysql</jdbc.groupId>
     <jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
-    <jdbc.version>5.1.10</jdbc.version>
+    <jdbc.version>5.1.22</jdbc.version>
     <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
     
     <!-- For maven-pmd-plugin compliance -->
