@@ -4,3 +4,4 @@ mmps-parent-6-SNAPSHOT
  + Upgrade Spring Security to 3.1.3.RELEASE
  + Upgrade AppFuse to 2.2.1
  + Add default jdbc connection properties to avoid maven build failure
+ + Upgrade multiple dependencie and plugin versions
