@@ -1,4 +1,5 @@
 mmps-parent-7
+ + Upgrade activemq-core to avoid a version-conflict warning on slf4j with quartz
 
 mmps-parent-6
  + Upgrade Struts to 2.3.7
