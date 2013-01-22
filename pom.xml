@@ -5,7 +5,7 @@
   <groupId>com.zzvc.mmps</groupId>
   <artifactId>mmps-parent</artifactId>
   <packaging>pom</packaging>
-  <version>2.0</version>
+  <version>2.0.1-SNAPSHOT</version>
   <name>mmps-parent</name>
 
   <scm>
@@ -85,7 +85,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>hibernate3-maven-plugin</artifactId>
-          <version>3.0</version>
+          <version>2.2</version>
           <configuration>
             <components>
               <component>
