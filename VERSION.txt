@@ -1,3 +1,6 @@
+mmps-parent-2.0.1
+ + Rollback of hibernate3-maven-plugin 2.2-to-3.0 upgrade since major difference in configuration  
+
 mmps-parent-2.0
  + Upgrade activemq-core to avoid a version-conflict warning on slf4j with quartz
  + Swich mmps-parent versioning strategy to major.minor.patch like other modules  
