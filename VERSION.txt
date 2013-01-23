@@ -1,3 +1,6 @@
+mmps-parent-2.0.2
+ + Upgrade some dependencies  
+
 mmps-parent-2.0.1
  + Rollback of hibernate3-maven-plugin 2.2-to-3.0 upgrade since major difference in configuration  
 
